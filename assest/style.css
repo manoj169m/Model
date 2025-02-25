@@ -100,6 +100,9 @@ body {
         display: block;
         z-index: 101;
     }
+    .nav-content{
+        width: 100%;
+    }
 
     .nav-menu {
         position: fixed;
@@ -566,16 +569,14 @@ body {
 }
 
 /* Swiper container */
-.swiper-container {
-    width: 100%;
-    max-width: 500px; /* Set a max width to prevent it from getting too large */
-    height: 450px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 15px 35px rgba(193, 38, 136, 0.15);
-    margin: 0 auto; /* Center align */
-}
-
+ .swiper-container {
+            width: 100%;
+            max-width: 500px;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
 
 .swiper-slide {
     position: relative;

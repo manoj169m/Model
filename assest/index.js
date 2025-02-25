@@ -1,81 +1,87 @@
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
-
-// Close menu when clicking a link
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-
-// Before & After Slider Functionality
+// Main navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Swiper
-    const swiper = new Swiper('.swiper-container', {
-        // Optional parameters
-        loop: false,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-        }
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    // Toggle navigation menu
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
-    
+
+    // Close menu when menu item is clicked
+    document.querySelectorAll('.nav-menu a').forEach(item => {
+        item.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
     // Before & After Slider Functionality
-    const sliders = document.querySelectorAll('.slider-before-after');
-    
-    sliders.forEach(slider => {
-        const handle = slider.querySelector('.slider-handle');
-        const divider = slider.querySelector('.slider-divider');
-        let isDown = false;
+    const sliderContainer = document.querySelector('.slider-before-after');
+    if (sliderContainer) {
+        const handle = sliderContainer.querySelector('.slider-handle');
+        const divider = sliderContainer.querySelector('.slider-divider');
+        const beforeSection = sliderContainer.querySelector('.before');
         
-        // Set initial position to 50%
-        slider.style.setProperty('--position', '50%');
+        // Set initial position (50%)
+        let position = 50;
+        updateSliderPosition(position);
         
-        // Mouse events
-        handle.addEventListener('mousedown', () => {
-            isDown = true;
-        });
+        // Handle drag events
+        let isDragging = false;
         
-        window.addEventListener('mouseup', () => {
-            isDown = false;
-        });
+        handle.addEventListener('mousedown', startDrag);
+        handle.addEventListener('touchstart', startDrag, { passive: true });
         
-        window.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            handleMove(e.clientX, slider);
-        });
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag, { passive: false });
         
-        // Touch events
-        handle.addEventListener('touchstart', (e) => {
-            isDown = true;
-            e.preventDefault(); // Prevent default touch behavior
-        });
+        document.addEventListener('mouseup', endDrag);
+        document.addEventListener('touchend', endDrag);
         
-        window.addEventListener('touchend', () => {
-            isDown = false;
-        });
+        // Drag functions
+        function startDrag(e) {
+            isDragging = true;
+            e.preventDefault();
+        }
         
-        window.addEventListener('touchmove', (e) => {
-            if (!isDown) return;
-            handleMove(e.touches[0].clientX, slider);
-            e.preventDefault(); // Prevent scrolling when using the slider
-        });
-    });
-    
-    function handleMove(clientX, slider) {
-        const rect = slider.getBoundingClientRect();
-        const position = Math.max(0, Math.min(100, ((clientX - rect.left) / rect.width) * 100));
-        slider.style.setProperty('--position', `${position}%`);
+        function drag(e) {
+            if (!isDragging) return;
+            
+            let clientX;
+            if (e.type === 'touchmove') {
+                e.preventDefault(); // Prevent scrolling while dragging
+                clientX = e.touches[0].clientX;
+            } else {
+                clientX = e.clientX;
+            }
+            
+            const rect = sliderContainer.getBoundingClientRect();
+            let newPosition = ((clientX - rect.left) / rect.width) * 100;
+            
+            // Constrain position between 0 and 100
+            newPosition = Math.min(Math.max(newPosition, 0), 100);
+            
+            updateSliderPosition(newPosition);
+        }
+        
+        function endDrag() {
+            isDragging = false;
+        }
+        
+        function updateSliderPosition(pos) {
+            position = pos;
+            
+            // Update CSS variable for the divider and handle position
+            sliderContainer.style.setProperty('--position', `${position}%`);
+            
+            // Update clip-path for the before section
+            beforeSection.style.clipPath = `polygon(0 0, ${position}% 0, ${position}% 100%, 0 100%)`;
+            
+            // Position the divider and handle
+            divider.style.left = `${position}%`;
+            handle.style.left = `${position}%`;
+        }
     }
 });
