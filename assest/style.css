@@ -25,7 +25,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width:100%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -99,9 +99,6 @@ body {
     .hamburger {
         display: block;
         z-index: 101;
-    }
-    .nav-content{
-        width: 100%;
     }
 
     .nav-menu {
@@ -388,16 +385,7 @@ body {
 }
   
 /* Animation effects for cards (works with AOS library) */
-[data-aos="fade-up"] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-  
-[data-aos="fade-up"].aos-animate {
-    opacity: 1;
-    transform: translateY(0);
-}
+
   
 /* Responsive styling for mobile devices */
 @media screen and (max-width: 768px) {
@@ -571,7 +559,7 @@ body {
 /* Swiper container */
  .swiper-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 300px;
             height: 450px;
             border-radius: 15px;
             overflow: hidden;
@@ -732,5 +720,203 @@ body {
     
     .swiper-container {
         height: 300px;
+    }
+}
+
+
+/* About Section */
+.About-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f8f8;
+    padding: 0 15px; /* Added padding for small screens */
+    box-sizing: border-box;
+}
+
+.about-main {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of elements */
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* About Image Section */
+.about-image {
+    flex: 1;
+    position: relative;
+    margin-bottom: 1.5rem;
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Text Over Image */
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5); /* Slight dark background for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%; /* Ensure text doesn't overflow */
+}
+
+.image-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+
+.image-text p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* About Content Section */
+.about-content {
+    flex: 1;
+    padding-left: 2rem;
+    max-width: 100%;
+}
+
+/* Content Heading */
+.about-content h2 {
+    font-size: 2.5rem;
+    color: #c12688;
+    margin-bottom: 1rem;
+    position: relative;
+    width: fit-content;
+}
+
+
+.about-content h2:after {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #c12688, #f38df8);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* Content Paragraph */
+.about-content p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Responsive Design for Small Devices (Mobile and Tablet) */
+@media (max-width: 768px) {
+    .about-main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; /* Center the content */
+    }
+
+    .about-image {
+        margin-bottom: 1.5rem;
+        max-width: 100%;
+    }
+
+    .about-content {
+        padding-left: 0;
+        text-align: center; /* Center-align text on smaller screens */
+    }
+
+    .image-text h2 {
+        font-size: 2rem;
+    }
+
+    .image-text p {
+        font-size: 0.9rem;
+    }
+
+    .about-content h2 {
+        font-size: 2rem;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Larger Devices (Tablets in landscape, smaller desktops) */
+@media (max-width: 1024px) {
+    .about-main {
+        flex-direction: column;
+        padding: 2rem 1rem; /* Add padding for better spacing */
+    }
+
+    .about-image {
+        margin-bottom: 2rem;
+    }
+
+    .about-content {
+        padding-left: 0;
+    }
+
+    .image-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .image-text p {
+        font-size: 1rem;
+    }
+
+    .about-content h2 {
+        font-size: 2.3rem;
+    }
+
+    .about-content p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Devices (Larger Desktops and Screens) */
+@media (min-width: 1200px) {
+    .about-main {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .about-content {
+        padding-left: 3rem;
+    }
+
+    .image-text h2 {
+        font-size: 2.5rem;
+    }
+
+    .image-text p {
+        font-size: 1.2rem;
+    }
+
+    .about-content h2 {
+        font-size: 2.8rem;
+    }
+
+    .about-content p {
+        font-size: 1.2rem;
     }
 }

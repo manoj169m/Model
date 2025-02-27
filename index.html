@@ -65,62 +65,87 @@
     <div class="portfolio-section">
         <div class="portfolio-main">
             <div class="portfolio-images">
-                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"><img src="./assest/make1.jpg"  alt="Portfolio Image 1"></div>
-                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"><img src="./assest/make2.jpg" alt="Portfolio Image 2"></div>
-                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"><img src="./assest/makeup.jpg" alt="Portfolio Image 3"></div>
-                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"><img src="./assest/make1.jpg" alt="Portfolio Image 4"></div>
-                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300"><img src="./assest/make1.jpg" alt="Portfolio Image 5"></div>
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="./assest/make1.jpg" alt="Portfolio Image 1">
+                </div>
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="./assest/make2.jpg" alt="Portfolio Image 2">
+                </div>
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="./assest/makeup.jpg" alt="Portfolio Image 3">
+                </div>
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="./assest/make1.jpg" alt="Portfolio Image 4">
+                </div>
+                <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
+                    <img src="./assest/make1.jpg" alt="Portfolio Image 5">
+                </div>
             </div>
-            
+    
             <div class="portfolio-before">
-                <h2>Before & After</h2>
+                <h2>Portfolio Gallery</h2>
                 <!-- Swiper Container -->
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="slider-before-after">
-                                <div class="before">
-                                    <img src="./assest/make1.jpg" alt="Before Makeup">
-                                    <span class="slide-label before-label">Before</span>
-                                </div>
-                                <div class="after">
-                                    <img src="./assest/make2.jpg" alt="After Makeup">
-                                    <span class="slide-label after-label">After</span>
-                                </div>
-                                <div class="slider-divider"></div>
-                                <div class="slider-handle"></div>
-                            </div>
-                        </div>
-                        <!-- Add more slides as needed -->
+                        <div class="swiper-slide"><img src="./assest/make1.jpg" alt="Image 1"></div>
+                        <div class="swiper-slide"><img src="./assest/make2.jpg" alt="Image 2"></div>
+                        <div class="swiper-slide"><img src="./assest/makeup.jpg" alt="Image 3"></div>
+                        <div class="swiper-slide"><img src="./assest/make1.jpg" alt="Image 4"></div>
+                        <div class="swiper-slide"><img src="./assest/make1.jpg" alt="Image 5"></div>
                     </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <!-- Pagination and Navigation -->
+                  
                 </div>
             </div>
         </div>
     </div>
 
+
+    <!--  About section -->
+    <div class="About-section">
+        <div class="about-main">
+            <div class="about-image">
+                <img src="/assest/make2.jpg" alt="Description of image">
+                <div class="image-text">
+                    <h2>About Our Company</h2>
+                    <p>We are passionate about creating experiences that resonate with our audience. Join us on our journey to innovate and inspire.</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <h2>What We Do</h2>
+                <p>We focus on delivering high-quality services and solutions that meet the needs of our clients. Our team of experts ensures that every project is executed with precision and care.</p>
+            </div>
+        </div>
+    </div>
+    
+    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="/assest/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     
     <script>
         // Initialize AOS
         AOS.init();
+    
+        // Swiper initialization
         document.addEventListener('DOMContentLoaded', function() {
-        const swiper = new Swiper('.swiper-container', {
-            loop: false,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            }
-        });
+    const swiper = new Swiper('.swiper-container', {
+        loop: true, // Loop through the images
+        autoplay: {
+            delay: 3000, // Time in milliseconds before the next slide (3 seconds)
+            disableOnInteraction: false // Allow autoplay to continue even if the user interacts with the swiper
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        }
     });
+});
+
     </script>
+    
 </body>
 </html>
