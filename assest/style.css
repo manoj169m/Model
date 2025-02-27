@@ -984,6 +984,7 @@ footer {
       flex-direction: column;
       align-items: center;
       gap: 3rem;
+      height: fit-content;
     }
   
     .footer-section h3 {
